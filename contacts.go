@@ -43,7 +43,7 @@ func (c *Client) CreateContact(listID string, contact Contact) ([]byte, error) {
 
 // Unsubscribe removes a contact from a list.
 func (c *Client) UnsubscribeContact(listID string, contactID string, status Status) ([]byte, error) {
-	endpoint := fmt.Sprintf("/contacs/%s/status/%s", listID, contactID)
+	endpoint := fmt.Sprintf("/contacts/%s/status/%s", listID, contactID)
 	return c.request(http.MethodPost, endpoint, status)
 }
 
