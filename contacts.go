@@ -30,6 +30,10 @@ type Status struct {
 	Status string `json:"status"`
 }
 
+type TagId struct {
+	TagId string `json:"tag_id"`
+}
+
 // Client handles API operations related to Client.
 // type Client struct {
 // 	Client *Client
@@ -48,13 +52,13 @@ func (c *Client) UnsubscribeContact(listID string, contactID string, status Stat
 }
 
 // AddTag assigns a tag to a specific contact.
-func (c *Client) AddTag(contactID string, tagID string) ([]byte, error) {
+func (c *Client) AddContactTag(contactID string, tagID TagId) ([]byte, error) {
 	endpoint := fmt.Sprintf("/contacts/tags/%s/add", contactID)
 	return c.request(http.MethodPost, endpoint, tagID)
 }
 
 // RemoveTag deletes a tag from a specific contact.
-func (c *Client) RemoveTag(contactID string, tagID string) ([]byte, error) {
+func (c *Client) RemoveContactTag(contactID string, tagID TagId) ([]byte, error) {
 	endpoint := fmt.Sprintf("/contacts/tags/%s/remove", contactID)
 	return c.request(http.MethodDelete, endpoint, tagID)
 }
