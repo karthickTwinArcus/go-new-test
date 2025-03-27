@@ -50,6 +50,7 @@ func (c *Client) request(method, endpoint string, data interface{}) ([]byte, err
 	// Set headers
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", "Bearer "+c.APIKey)
+	req.Header.Set("User-Agent", fmt.Sprintf("yonoma-go/%s", "v1.0.0"))
 
 	// Perform request
 	resp, err := c.HTTPClient.Do(req)

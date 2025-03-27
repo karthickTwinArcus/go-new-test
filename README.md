@@ -30,17 +30,15 @@ if err != nil {
 contactData := yonoma.Contact{
     Email:  "glennjacob@example.com",
     Status: "Subscribed" | "Unsubscribed",
-    Data: yonoma.ContactData{
-        FirstName: string,
-        LastName:  string,
-        Phone:     string,
-        Gender:    string,
-        Address:   string,
-        City:      string,
-        State:     string,
-        Country:   string,
-        Zipcode:   string,
-    },
+    FirstName: string,
+    LastName:  string,
+    Phone:     string,
+    Gender:    string,
+    Address:   string,
+    City:      string,
+    State:     string,
+    Country:   string,
+    Zipcode:   string,
 }
 responseC, err := client.CreateContact("List Id", contactData)
 if err != nil {
