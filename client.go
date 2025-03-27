@@ -20,7 +20,7 @@ type Client struct {
 func NewClient(apiKey string) *Client {
 	return &Client{
 		APIKey:  apiKey,
-		BaseURL: "https://api.yonoma.com/v1",
+		BaseURL: "https://api.yonoma.io/v1",
 		HTTPClient: &http.Client{
 			Timeout: 10 * time.Second, // Set a timeout to avoid long waits
 		},
