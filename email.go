@@ -5,7 +5,7 @@ import (
 )
 
 // EmailRequest represents the structure for sending an email.
-type EmailRequest struct {
+type Email struct {
 	FromEmail    string `json:"from_email"`
 	ToEmail      string `json:"to_email"`
 	Subject      string `json:"subject"`
@@ -13,7 +13,7 @@ type EmailRequest struct {
 }
 
 // Send sends an email using the Yonoma API.
-func (e *Client) Send(request EmailRequest) ([]byte, error) {
+func (e *Client) Send(request Email) ([]byte, error) {
 	endpoint := "/email/send"
 	return e.request(http.MethodPost, endpoint, request)
 }
