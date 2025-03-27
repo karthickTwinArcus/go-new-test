@@ -37,8 +37,8 @@ type Status struct {
 // }
 
 // Create adds a new contact to a specified list.
-func (c *Client) CreatedContact(listID string, contact Contact) (*Contact, error) {
-	endpoint := fmt.Sprintf("/contacs/%s/create", listID)
+func (c *Client) CreateContact(listID string, contact Contact) (*Contact, error) {
+	endpoint := fmt.Sprintf("/contacts/%s/create", listID)
 
 	// Send request
 	response, err := c.request(http.MethodPost, endpoint, contact)
