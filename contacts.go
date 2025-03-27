@@ -8,27 +8,27 @@ import (
 
 // Contact represents a user's contact details.
 type Contact struct {
-	Email  string      `json:"contact_email"`
-	Status string      `json:"sub_status"`
+	Email  string      `json:"email"`
+	Status string      `json:"status"`
 	Data   ContactData `json:"data"`
 }
 
 // ContactData stores additional information about a contact.
 type ContactData struct {
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
-	Phone     string `json:"mobile_number"`
-	Gender    string `json:"gender"`
-	Address   string `json:"address"`
-	City      string `json:"city"`
-	State     string `json:"state"`
-	Country   string `json:"country"`
-	Zipcode   string `json:"zipcode"`
+	FirstName   string `json:"firstName"`
+	LastName    string `json:"lastName"`
+	Phone       string `json:"phone"`
+	DateOfBirth string `json:"dateOfBirth"`
+	Address     string `json:"address"`
+	City        string `json:"city"`
+	State       string `json:"state"`
+	Country     string `json:"country"`
+	Zipcode     string `json:"zipcode"`
 }
 
 // Status represents a contact's subscription status.
 type Status struct {
-	Status string `json:"sub_status"`
+	Status string `json:"status"`
 }
 
 // Client handles API operations related to Client.
