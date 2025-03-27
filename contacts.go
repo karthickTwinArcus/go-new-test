@@ -56,7 +56,7 @@ func (c *Client) CreateContact(listID string, contact Contact) (*Contact, error)
 }
 
 // Unsubscribe removes a contact from a list.
-func (c *Client) UnsubscribeContact(listID, contactID string, status Status) error {
+func (c *Client) UnsubscribeContact(listID string, contactID string, status Status) error {
 	endpoint := fmt.Sprintf("/contacs/%s/status/%s", listID, contactID)
 
 	// Send request
@@ -65,7 +65,7 @@ func (c *Client) UnsubscribeContact(listID, contactID string, status Status) err
 }
 
 // AddTag assigns a tag to a specific contact.
-func (c *Client) AddTag(contactID, tagID string) error {
+func (c *Client) AddTag(contactID string, tagID string) error {
 	endpoint := fmt.Sprintf("/contacts/tags/%s/add", contactID)
 
 	// Prepare request payload
@@ -77,7 +77,7 @@ func (c *Client) AddTag(contactID, tagID string) error {
 }
 
 // RemoveTag deletes a tag from a specific contact.
-func (c *Client) RemoveTag(contactID, tagID string) error {
+func (c *Client) RemoveTag(contactID string, tagID string) error {
 	endpoint := fmt.Sprintf("/contacts/tags/%s/remove", contactID)
 
 	// Send request
