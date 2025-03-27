@@ -1,7 +1,6 @@
 package yonoma
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 )
@@ -37,50 +36,25 @@ type Status struct {
 // }
 
 // Create adds a new contact to a specified list.
-func (c *Client) CreateContact(listID string, contact Contact) (*Contact, error) {
+func (c *Client) CreateContact(listID string, contact Contact) ([]byte, error) {
 	endpoint := fmt.Sprintf("/contacts/%s/create", listID)
-
-	// Send request
-	response, err := c.request(http.MethodPost, endpoint, contact)
-	if err != nil {
-		return nil, err
-	}
-
-	// Parse response
-	var createdContact Contact
-	if err := json.Unmarshal(response, &createdContact); err != nil {
-		return nil, fmt.Errorf("failed to parse response: %w", err)
-	}
-
-	return &createdContact, nil
+	return c.request(http.MethodPost, endpoint, contact)
 }
 
 // Unsubscribe removes a contact from a list.
-func (c *Client) UnsubscribeContact(listID string, contactID string, status Status) error {
+func (c *Client) UnsubscribeContact(listID string, contactID string, status Status) ([]byte, error) {
 	endpoint := fmt.Sprintf("/contacs/%s/status/%s", listID, contactID)
-
-	// Send request
-	_, err := c.request(http.MethodPost, endpoint, status)
-	return err
+	return c.request(http.MethodPost, endpoint, status)
 }
 
 // AddTag assigns a tag to a specific contact.
-func (c *Client) AddTag(contactID string, tagID string) error {
+func (c *Client) AddTag(contactID string, tagID string) ([]byte, error) {
 	endpoint := fmt.Sprintf("/contacts/tags/%s/add", contactID)
-
-	// Prepare request payload
-	payload := map[string]string{"tag_id": tagID}
-
-	// Send request
-	_, err := c.request(http.MethodPost, endpoint, payload)
-	return err
+	return c.request(http.MethodPost, endpoint, tagID)
 }
 
 // RemoveTag deletes a tag from a specific contact.
-func (c *Client) RemoveTag(contactID string, tagID string) error {
+func (c *Client) RemoveTag(contactID string, tagID string) ([]byte, error) {
 	endpoint := fmt.Sprintf("/contacts/tags/%s/remove", contactID)
-
-	// Send request
-	_, err := c.request(http.MethodDelete, endpoint, tagID)
-	return err
+	return c.request(http.MethodDelete, endpoint, tagID)
 }
