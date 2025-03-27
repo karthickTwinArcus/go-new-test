@@ -60,5 +60,5 @@ func (c *Client) AddContactTag(contactID string, tagID TagId) ([]byte, error) {
 // RemoveTag deletes a tag from a specific contact.
 func (c *Client) RemoveContactTag(contactID string, tagID TagId) ([]byte, error) {
 	endpoint := fmt.Sprintf("/contacts/tags/%s/remove", contactID)
-	return c.request(http.MethodDelete, endpoint, tagID)
+	return c.request(http.MethodPost, endpoint, tagID)
 }
